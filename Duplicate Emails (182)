@@ -1,0 +1,19 @@
+select email from person group by email having count(*)>1;
+
+
+Input
+Person =
+| id | email   |
+| -- | ------- |
+| 1  | a@b.com |
+| 2  | c@d.com |
+| 3  | a@b.com |
+Output
+| EMAIL   |
+| ------- |
+| a@b.com |
+Expected
+| Email   |
+| ------- |
+| a@b.com |
+
