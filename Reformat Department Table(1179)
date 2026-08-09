@@ -1,0 +1,38 @@
+# Write your MySQL query statement below
+select 
+    id,
+    max(case when month='jan' then revenue end) as jan_revenue,
+    max(case when month='feb' then revenue end) as feb_revenue,
+    max(case when month='mar' then revenue end) as mar_revenue,
+    max(case when month='apr' then revenue end) as apr_revenue,
+    max(case when month='may' then revenue end) as may_revenue,
+    max(case when month='jun' then revenue end) as jun_revenue,
+    max(case when month='jul' then revenue end) as jul_revenue,
+    max(case when month='aug' then revenue end) as aug_revenue,
+    max(case when month='sep' then revenue end) as sep_revenue,
+    max(case when month='oct' then revenue end) as oct_revenue,
+    max(case when month='nov' then revenue end) as nov_revenue,
+    max(case when month='dec' then revenue end) as dec_revenue
+    from Department
+    group by id;
+
+Input
+Department =
+| id | revenue | month |
+| -- | ------- | ----- |
+| 1  | 8000    | Jan   |
+| 2  | 9000    | Jan   |
+| 3  | 10000   | Feb   |
+| 1  | 7000    | Feb   |
+| 1  | 6000    | Mar   |
+Output
+| id | jan_revenue | feb_revenue | mar_revenue | apr_revenue | may_revenue | jun_revenue | jul_revenue | aug_revenue | sep_revenue | oct_revenue | nov_revenue | dec_revenue |
+| -- | ----------- | ----------- | ----------- | ----------- | ----------- | ----------- | ----------- | ----------- | ----------- | ----------- | ----------- | ----------- |
+| 1  | 8000        | 7000        | 6000        | null        | null        | null        | null        | null        | null        | null        | null        | null        |
+| 2  | 9000        | null        | null        | null        | null        | null        | null        | null        | null        | null        | null        | null        |
+View more
+Expected
+| id | Jan_Revenue | Feb_Revenue | Mar_Revenue | Apr_Revenue | May_Revenue | Jun_Revenue | Jul_Revenue | Aug_Revenue | Sep_Revenue | Oct_Revenue | Nov_Revenue | Dec_Revenue |
+| -- | ----------- | ----------- | ----------- | ----------- | ----------- | ----------- | ----------- | ----------- | ----------- | ----------- | ----------- | ----------- |
+| 1  | 8000        | 7000        | 6000        | null        | null        | null        | null        | null        | null        | null        | null        | null        |
+| 2  | 9000        | null        | null        | null        | null        | null        | null        | null        | null        | null        | null        | null        |
