@@ -1,0 +1,19 @@
+delete p1 from person p1 join person p2 on p1.email=p2.email and p1.id>p2.id;
+
+Input
+Person =
+| id | email            |
+| -- | ---------------- |
+| 1  | john@example.com |
+| 2  | bob@example.com  |
+| 3  | john@example.com |
+Output
+| id | email            |
+| -- | ---------------- |
+| 1  | john@example.com |
+| 2  | bob@example.com  |
+Expected
+| id | email            |
+| -- | ---------------- |
+| 1  | john@example.com |
+| 2  | bob@example.com  |
