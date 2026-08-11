@@ -1,0 +1,31 @@
+select p.product_name,sum(o.unit) as unit from Products p join Orders o on p.product_id=o.product_id where o.order_date >= date '2020-02-01' and o.order_date < date '2020-03-01' group by p.product_id,p.product_name having sum(o.unit) >=100;
+
+Input
+Products =
+| product_id | product_name          | product_category |
+| ---------- | --------------------- | ---------------- |
+| 1          | Leetcode Solutions    | Book             |
+| 2          | Jewels of Stringology | Book             |
+| 3          | HP                    | Laptop           |
+| 4          | Lenovo                | Laptop           |
+| 5          | Leetcode Kit          | T-shirt          |
+Orders =
+| product_id | order_date | unit |
+| ---------- | ---------- | ---- |
+| 1          | 2020-02-05 | 60   |
+| 1          | 2020-02-10 | 70   |
+| 2          | 2020-01-18 | 30   |
+| 2          | 2020-02-11 | 80   |
+| 3          | 2020-02-17 | 2    |
+| 3          | 2020-02-24 | 3    |
+View more
+Output
+| product_name       | unit |
+| ------------------ | ---- |
+| Leetcode Solutions | 130  |
+| Leetcode Kit       | 100  |
+Expected
+| product_name       | unit |
+| ------------------ | ---- |
+| Leetcode Solutions | 130  |
+| Leetcode Kit       | 100  |
